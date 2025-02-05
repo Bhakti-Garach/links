@@ -1,3 +1,13 @@
+/* Checklist */
+
+
+
+:root {
+    --base-size: 12px;
+    --gutter-size: calc(3 * var(--base-size));
+
+}
+
 .header {
     display: grid;
     grid-template-columns: calc(50% - 10px) calc(50% - 10px);
