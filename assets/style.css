@@ -29,8 +29,8 @@
 /* Main Grid Layout */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(6, calc(100% / 6 - 10px)); /* 6 equal columns */
-    grid-template-rows: repeat(2, auto); /* 2 rows */
+    grid-template-columns: repeat(6, calc(100% / 6 - 10px));
+    grid-template-rows: repeat(2, auto);
     gap: 10px;
     padding: 20px;
 }
