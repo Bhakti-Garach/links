@@ -1,13 +1,56 @@
 /* Checklist */
+/* Mobile First */
+/* Responsiveness-min 375px, 768px, 1280px */
 /* Set variables */
 /* Use calc */
 /* Add font files */
 
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+@font-face {
+    font-family: 'Impact Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Impact Regular'), url('impact.woff') format('woff');
+    }
+
+
 
 :root {
-    --base-size: 12px;
+
+    /* general style */
+    --base-size: 20px;
     --gutter-size: calc(3 * var(--base-size));
 
+
+    /* font style */
+    --menu-font: 'Roboto Mono';
+    --heading-font: 'Roboto Mono';
+    --subheading-font: 'Roboto Mono';
+    --paragraph-font: 'Roboto Mono';
+
+    /* color style */
+    --primary-color: black;
+    --secondary-color: grey;
+    --accent-color: green;
+    --hover-color: black;
+
+    /* h1 style */
+    /* h2 style */
+    /* h3 style */
+    /* h4 style */
+    /* h5 style */
+    /* h6 style */
+    /* paragraph style */
+
+    /* media queries */
+
+}
+
+html {
+    scroll-behavior: smooth;
+    margin: 0;
 }
 
 .header {
@@ -18,17 +61,22 @@
 }
 
 .header-left {
+    font-family: var(--menu-font);
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--primary-color);
     text-align: left;
-    font-size: 1.2rem;
-    font-weight: bold;
 }
 
 .header-right {
+    font-family: var(--menu-font);
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--primary-color);
     text-align: right;
 }
 
 .header-right a {
-    margin-left: 20px;
     text-decoration: none;
     color: black;
     font-size: 1rem;
@@ -36,9 +84,93 @@
 
 .header-right a:hover {
     text-decoration: underline;
+    color: var(--hover-color);
 }
 
-/* Main Grid Layout */
+.menu-toggle {
+    font-family: var(--menu-font);
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    text-align: right;
+}
+
+.nav-links {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+
+/* MEDIA QUERY */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle.active {
+        content: '[CLOSE]';
+    }
+}
+
+@media (min-width: 769px) {
+    .header {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+
+/* Main */
+
+main {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Grid Layout */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(6, calc(100% / 6 - 10px));

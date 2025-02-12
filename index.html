@@ -5,19 +5,26 @@
         <title>Typography & Interaction</title>
         <link href="assets/reset.css" rel="stylesheet">
         <link href="assets/style.css" rel="stylesheet">
+        <script defer src="assets/arena.js"></script>
     </head>
     <!-- [Interface as Interface Concept: A digital art gallery showcasing the fusion of design disciplines] -->
     <body>
         <header class="header">
-            <div class="header-left">Typography and Interaction</div>
+            <div class="header-left">Typography & Interaction</div>
             <nav class="header-right">
-                <a href="#">Info</a>
-                <a href="#">Artists</a>
-                <a href="#">Exhibits</a>
-                <a href="#">Shop</a>
+                <div class="menu-toggle" id="menu-toggle">[MENU]</div>
+                <ul class="nav-links" id="nav-links">
+                    <li>[<a href="#">Info</a>, <a href="#">Artists</a>, <a href="#">Exhibits</a>, <a href="#">Index</a>]</li>
+                    <!-- <li><a href="#">Artists</a></li>
+                    <li><a href="#">Exhibits</a></li>
+                    <li><a href="#">Index</a></li> -->
+                </ul>
             </nav>
         </header>
-        <main class="grid-container">
+        <main>
+            <h1 class="animate-heading">ART GALLERY</h1>
+        </main>
+        <article class="grid-container">
             <!-- Media Items -->
             <div class="grid-item"><img src="Files/original_9fefe9bf0667f741eee3cc90c61c3986.jpg" alt="Media 1"></div>
             <div class="grid-item"><img src="Files/original_a5b7e900b884ccf446ede3494a6a4898.gif" alt="Media 2"></div>
@@ -35,5 +42,5 @@
                 This medium account would cover all the aspects of multidisciplinary design, from various studios to individual designers and everything in between.</p></div>
             <div class="grid-item"><iframe src="https://youtu.be/LCfBYE97rFk" allowfullscreen></iframe></div>
             <div class="grid-item"><a href="https://theluupe.com/blog/jessica-walsh-on-building-her-own-design-studio-and-breaking-cliches">Link</a></div>
-        </main>
+        </article>
     </body>
