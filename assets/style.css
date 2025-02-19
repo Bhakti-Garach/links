@@ -229,7 +229,7 @@ svg {
 
 /* BLOCKS */
 
-#channel-blocks {
+#channel-blocks ul {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 20px;
@@ -240,14 +240,14 @@ svg {
 
 /* BLOCKS MEDIA QUERY*/
 @media (min-width: 769px) {
-#channel-blocks {
+#channel-blocks ul {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (min-width: 1280px) {
-#channel-blocks {
+#channel-blocks ul {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
     }
