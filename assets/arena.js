@@ -47,7 +47,7 @@ let renderBlock = (block) => {
 	if (block.class == 'Link') {
 		let linkItem =
 			`
-			<li>
+			<div>
 				<p><em>Link</em></p>
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
@@ -57,7 +57,7 @@ let renderBlock = (block) => {
 				<h3>${ block.title }</h3>
 				${ block.description_html }
 				<p><a href="${ block.source.url }">See the original ↗</a></p>
-			</li>
+			</div>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
 	}
