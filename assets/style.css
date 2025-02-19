@@ -214,7 +214,7 @@ svg {
 }
 
 .content {
-    margin-top: 90vh; /* So scrolling affects the SVG */
+    margin-top: 90vh;
     padding: 2rem;
     font-size: 2rem;
 }
