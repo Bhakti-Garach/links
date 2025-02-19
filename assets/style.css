@@ -242,14 +242,14 @@ svg {
 @media (min-width: 769px) {
 #channel-blocks ul {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr);
     }
 }
 
 @media (min-width: 1280px) {
 #channel-blocks ul {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(5, minmax(0, 1fr);
     }
 }
 
