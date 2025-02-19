@@ -19,9 +19,6 @@ document.head.appendChild(markdownIt)
 
 
 
-
-
-
 // Okay, Are.na stuff!
 let channelSlug = "multidisciplinary-design-bridging-disciplines-shaping-ideas"; // The “slug” is just the end of the URL
 
@@ -39,6 +36,7 @@ let placeChannelInfo = (data) => {
 	channelCount.innerHTML = data.length
 	channelLink.href = `https://www.are.na/channel/${channelSlug}`
 }
+
 
 // Then our big function for specific-block-type rendering:
 let renderBlock = (block) => {
@@ -173,4 +171,11 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		renderUser(data.user, channelUsers)
 	})
 
+// Title Stretch on Scroll
+window.addEventListener("scroll", () => {
+    let scrollY = window.scrollY;
+    let maxShrink = 30;
+    let newHeight = Math.max(90 - (scrollY / 10), 50);
 
+    document.documentElement.style.setProperty('--svg-height', `${newHeight}vh`);
+});

@@ -1,9 +1,9 @@
 /* Checklist */
-/* Mobile First */
-/* Responsiveness-min 375px, 768px, 1280px */
-/* Set variables */
-/* Use calc */
-/* Add font files */
+    /* Mobile First */
+    /* Responsiveness-min 375px, 768px, 1280px */
+    /* Set variables */
+    /* Use calc */
+    /* Add font files */
 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
@@ -25,6 +25,9 @@
     /* general style */
     --base-size: 20px;
     --gutter-size: calc(3 * var(--base-size));
+    --menu-font-size: 0.9rem;
+    --svg-height: 80vh;
+    --svg-min-height: 50vh;
 
 
     /* font style */
@@ -52,7 +55,9 @@
     /* h4 style */
     /* h5 style */
     /* h6 style */
+
     /* paragraph style */
+    --p-font-size: 0.9rem;
 
     /* media queries */
 
@@ -61,20 +66,20 @@
 html {
     scroll-behavior: smooth;
     margin: 0;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: var(--base-size);
+    padding-right: var(--base-size);
 }
 
 .header {
     display: grid;
     grid-template-columns: calc(50% - 10px) calc(50% - 10px);
     align-items: center;
-    padding: 20px;
+    padding: var(--base-size);
 }
 
 .header-left {
     font-family: var(--menu-font);
-    font-size: 1rem;
+    font-size: var(--menu-font-size);
     text-transform: uppercase;
     color: var(--primary-color);
     text-align: left;
@@ -82,7 +87,7 @@ html {
 
 .header-right {
     font-family: var(--menu-font);
-    font-size: 1rem;
+    font-size: var(--menu-font-size);
     text-transform: uppercase;
     color: var(--primary-color);
     text-align: right;
@@ -91,7 +96,7 @@ html {
 .header-right a {
     text-decoration: none;
     color: black;
-    font-size: 1rem;
+    font-size: var(--menu-font-size);
 }
 
 .header-right a:hover {
@@ -101,7 +106,7 @@ html {
 
 .menu-toggle {
     font-family: var(--menu-font);
-    font-size: 1rem;
+    font-size: var(--menu-font-size);
     text-transform: uppercase;
     color: var(--primary-color);
     text-align: right;
@@ -115,13 +120,13 @@ html {
 }
 
 .nav-links li {
-    margin-left: 20px;
+    margin-left: var(--base-size);
 }
 
 .nav-links a {
     text-decoration: none;
     color: #000;
-    font-size: 1rem;
+    font-size: var(--menu-font-size);
 }
 
 .nav-links a:hover {
@@ -131,7 +136,7 @@ html {
 }
 
 
-/* MEDIA QUERY */
+/* HEADER MEDIA QUERY */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -193,36 +198,65 @@ html {
 
 /* Main */
 
-main {
+/* main {
     width: 100%;
     text-align: center;
     margin: auto;
+} */
+
+svg {
+    width: 100%;
+    height: var(--svg-height);
+    transition: height 0.2s ease-out;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-/* Grid Layout */
+.content {
+    margin-top: 90vh; /* So scrolling affects the SVG */
+    padding: 2rem;
+    font-size: 2rem;
+}
+
+.titleStretch {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* BLOCKS */
+
+main #channel-blocks ul {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    padding: 20px;
+    list-style: none;
+    
+}
+
+/* BLOCKS MEDIA QUERY*/
+@media (min-width: 769px) {
+main #channel-blocks ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+main #channel-blocks ul {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
 
 
-#channel-blocks img {
+#channel-blocks img iframe video {
 	display: block;
 	width: 100vw;
-	height: auto;
-	object-fit: cover;
-	aspect-ratio: 1/1;
-	overflow: hidden;
-}
-
-#channel-blocks iframe {
-	display: block;
-	width: 100vw;
-	height: auto;
-	object-fit: cover;
-	aspect-ratio: 1/1;
-	overflow: hidden;
-}
-
-#channel-blocks video {
-	display: block;
-	width: 100%;
 	height: auto;
 	object-fit: cover;
 	aspect-ratio: 1/1;
@@ -235,19 +269,7 @@ main {
     font-weight: bold;
 }
 
-@media(min-width: 769px) {
-    #channel-blocks {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr ;
-	}
-}
 
-@media(min-width: 1000px) {
-    #channel-blocks {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	}
-}
 
 
 
@@ -294,9 +316,6 @@ h2 {
     gap: 10px;
     padding: 20px;
 } */
-
-
-
 
 
 
