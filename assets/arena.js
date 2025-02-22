@@ -12,7 +12,7 @@ document.head.appendChild(markdownIt)
 
 
 // Okay, Are.na stuff!
-let channelSlug = 'multidisciplinary-design-bridging-disciplines-shaping-ideas' // The “slug” is just the end of the URL
+let channelSlug = "multidisciplinary-design-bridging-disciplines-shaping-ideas" // The “slug” is just the end of the URL
 
 
 
@@ -59,7 +59,17 @@ let renderBlock = (block) => {
 
 	// Images!
 	else if (block.class == 'Image') {
-		// …up to you!
+		console.log(block)
+		let imageItem =
+			`
+			<li class="image-block">
+				<figure>
+					<image src="${ block.image.large.url }">
+					<figcaption>${ block.title }</figcaption>
+				</figure>
+			</li>
+			`		
+		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
 	}
 
 	// Text!
