@@ -11,15 +11,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 
-@font-face {
-    font-family: 'Impact Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Impact Regular'), url('impact.woff') format('woff');
-    }
-
-
-
 :root {
 
     /* general style */
@@ -32,7 +23,7 @@
 
     /* font style */
     --menu-font: 'Roboto Mono';
-    --heading-font: 'Roboto Mono';
+    --heading-font: 'Cormorant Garamond';
     --subheading-font: 'Cormorant Garamond';
     --paragraph-font: 'Roboto Mono';
 
@@ -41,6 +32,7 @@
     --secondary-color: grey;
     --accent-color: green;
     --hover-color: black;
+    --background-color: white;
 
     /* h1 style */
     --h1-font-size: 5rem;
@@ -49,12 +41,6 @@
     /* h2 style */
     --h2-font-size: 1.5rem;
     --h2-padding: 20px;
-
-
-    /* h3 style */
-    /* h4 style */
-    /* h5 style */
-    /* h6 style */
 
     /* paragraph style */
     --p-font-size: 0.9rem;
@@ -73,8 +59,14 @@ html {
 .header {
     display: grid;
     grid-template-columns: calc(50% - 10px) calc(50% - 10px);
-    align-items: center;
     padding: var(--base-size);
+    background-color: var(--background-color);
+    position: fixed;
+    align-content: center;
+    width: 100svw;
+    z-index: 10;
+    top: 0;
+    left: 0;
 }
 
 .header-left {
@@ -196,7 +188,7 @@ html {
 }
 
 
-/* Main */
+/* MAIN */
 
 /* main {
     width: 100%;
@@ -204,32 +196,48 @@ html {
     margin: auto;
 } */
 
+/* .landing {
+    height: 90svh;
+} */
+
 svg {
     width: 100%;
-    height: var(--svg-height);
+    /* height: var(--svg-height); */
     transition: height 0.2s ease-out;
     position: absolute;
-    top: 0;
+    top: 70px;
     left: 0;
 }
 
 .content {
-    margin-top: 90vh;
-    padding: 2rem;
+    padding: var(--base-size);
+    font-family: var(--subheading-font);
     font-size: 2rem;
+    margin-top: 70vh;
 }
 
-.titleStretch {
+/* .titleStretch {
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
+} */
+
+/* MAIN MEDIA QUERY*/
+/* @media (min-width: 1280px) {
+    .landing {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+        }
+    .content {
+        grid-area: 3fr;
+    }
+    } */
 
 /* BLOCKS */
 
-#channel-blocks ul {
+#channel-blocks {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 20px;
@@ -240,27 +248,40 @@ svg {
 
 /* BLOCKS MEDIA QUERY*/
 @media (min-width: 769px) {
-#channel-blocks ul {
+#channel-blocks {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
 @media (min-width: 1280px) {
-#channel-blocks ul {
+#channel-blocks {
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr);
+        grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 }
 
 
-#channel-blocks img iframe video {
+.block {
 	display: block;
 	width: 100vw;
 	height: auto;
 	object-fit: cover;
 	aspect-ratio: 1/1;
 	overflow: hidden;
+    /* height: fit-content;
+    overflow: hidden; */
+}
+
+ul.grid-container {
+	display: block;
+	width: 100vw;
+	height: auto;
+	object-fit: cover;
+	aspect-ratio: 1/1;
+	overflow: hidden;
+    /* height: fit-content;
+    overflow: hidden; */
 }
 
 #channel-blocks a {
@@ -293,7 +314,6 @@ h2 {
 #channel-description {
     font-family: var(--subheading-font);
     font-size: var(--h2-font-size);
-    padding: auto;
 
 }
 
@@ -318,6 +338,84 @@ h2 {
 } */
 
 
+/* Remove some arena items */
+#channel-count {
+    display: none;
+}
+
+em {
+    display: none;
+}
+
+/* BOX MODAL */
+
+/* Modal Background */
+.popup-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal Content Box */
+  .popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 70%;
+    max-width: 800px;
+    max-height: 80%;
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  /* Close Button */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Popup Body */
+  #popupBody {
+    margin-top: 20px;
+  }
+
+
+
+  button {
+	cursor: pointer;
+}
+
+.image-block dialog[open] {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	inset: var(--spacing);
+}
+
+.link-block dialog[open] {
+	inset: var(--spacing);
+}
+
+body:has(dialog[open]) {
+	background-color: green;
+	overflow: hidden;
+}
+
+.image-block:has(dialog[open]) figure {
+	filter: blur(8px);
+}
+  
+  
 
 
 
