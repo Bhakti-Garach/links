@@ -28,13 +28,17 @@
     --menu-font: 'Roboto Mono';
     --heading-font: 'Cormorant Garamond';
     --subheading-font: 'Cormorant Garamond';
+    --block-title-font: 'Roboto Mono';
     --paragraph-font: 'Roboto Mono';
 
     /* h1 STYLE */
     --h1-font-size: 1.5rem;
 
+    /* h3 STYLE */
+    --h3-font-size: 0.9rem;
+
     /* p STYLE */
-    --p-font-size: 1rem;
+    --p-font-size: 0.9rem;
 
 }
 
@@ -69,12 +73,23 @@ html {
 }
 
 
-
-
 h1 {
     font-family: var(--heading-font);
     font-size: var(--h1-font-size);
 }
+
+h3, figcaption {
+    font-family: var(--block-title-font);
+    font-size: var(--h3-font-size);
+    text-transform: uppercase ;
+    width: 100%;
+}
+
+#channel-description {
+    font-family: var(--subheading-font);
+    font-size: var(--h1-font-size);
+}
+
 
 /* MAIN STYLE */
 
@@ -152,6 +167,13 @@ audio {
     display: block;
     background: #f0f0f0;
 }
+
+.image-block {
+    width: 100%;
+    height: 100%;
+    
+    object-fit:contain;
+}
   
 
 /* BLOCKS MEDIA QUERY*/
@@ -176,13 +198,20 @@ audio {
 }
 
 
+/* BOX MODAL */
+
+button {
+    cursor: pointer;
+}
+
+
 /* LOOP ANIMATION */
 
 .loop {
     display: block;
-    height: 100vh;
-    width: auto;
-    max-width: 100%;
+    padding-top: calc(2 * var(--spacing) );
+    padding-bottom: calc(2 * var(--spacing) );
+    margin: 0;
 }
   
 g {

@@ -44,8 +44,8 @@ let renderBlock = (block) => {
 			`
 			<li>
 				<picture>
-					<source srcset="${ block.image.thumb.url }">
-					<source srcset="${ block.image.large.url }">
+					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
+					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
 					<img src="${ block.image.original.url }">
 				</picture>
 				<h3>${ block.title }</h3>
@@ -58,14 +58,21 @@ let renderBlock = (block) => {
 
 	// Images!
 	else if (block.class == 'Image') {
-		console.log(block)
+		
 		let imageItem =
 			`
 			<li class="image-block">
-				<figure>
-					<image src="${ block.image.large.url }">
-					<figcaption>${ block.title }</figcaption>
-				</figure>
+				<button>
+					<figure>
+						<image src="${ block.image.large.url }">
+						<figcaption>${ block.title }</figcaption>
+					</figure>
+				</button>
+					<dialog>
+						<p>I am in a modal overlay!</p>
+						<button class="close">Close it!</button>
+					</dialog>
+				
 			</li>
 			`		
 		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
@@ -194,6 +201,20 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	container.insertAdjacentHTML('beforeend', userAddress)
 }
 
+let initInteraction = () => {
+	let imageBlocks = document.querySelectorAll('.image-block > button')
+	imageBlocks.forEach((block) => {
+		let openButton = block.querySelector('button')
+		let dialog = block.querySelector('dialog')
+
+		openButton.onclick = () => {
+			dialog.showModal
+		}
+
+
+	})
+}
+
 
 
 // Now that we have said what we can do, go get the data:
@@ -208,6 +229,8 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 			// console.log(block) // The data for a single block
 			renderBlock(block) // Pass the single block data to the render function
 		})
+
+		initInteraction()
 
 		// Also display the owner and collaborators:
 		let channelUsers = document.querySelector('#channel-users') // Show them together
