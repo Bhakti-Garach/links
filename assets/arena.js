@@ -43,14 +43,13 @@ let renderBlock = (block) => {
 		let linkItem =
 			`
 			<li>
-				<p><em>Link</em></p>
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
 					<img src="${ block.image.original.url }">
 				</picture>
 				<h3>${ block.title }</h3>
-				${ block.description_html }
+
 				<p><a href="${ block.source.url }">See the original ↗</a></p>
 			</li>
 			`
@@ -74,11 +73,19 @@ let renderBlock = (block) => {
 
 	// Text!
 	else if (block.class == 'Text') {
-		// …up to you!
+		console.log(block)
+		let textItem =
+		`
+		<li class="Text">
+			<blockquote>${block.content_html}</blockquote>
+		</li>
+		`
+		channelBlocks.insertAdjacentHTML('beforeend', textItem)
 	}
 
 	// Uploaded (not linked) media…
 	else if (block.class == 'Attachment') {
+		console.log(block)
 		let attachment = block.attachment.content_type // Save us some repetition
 
 		// Uploaded videos!
@@ -86,29 +93,56 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li>
-					<p><em>Video</em></p>
-					<video controls src="${ block.attachment.url }"></video>
+				<li class="video">
+					<video src="${ block.attachment.url }" autoplay muted playsinline loop></video>
+					<figcaption>${block.generated_title}</figcaption>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
 			// More on video, like the `autoplay` attribute:
 			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+
+			// Toggle controls on click
+			let videoPlay = channelBlocks.querySelector('.video:last-child video');
+			videoPlay.addEventListener('click', function() {
+
+			if (this.hasAttribute('controls')) {
+				this.removeAttribute('controls');
+			} else {
+				this.setAttribute('controls', 'controls');
+			}
+			});
+		
 		}
 
 		// Uploaded PDFs!
 		else if (attachment.includes('pdf')) {
-			// …up to you!
+			console.log(block)
+			let pdfItem =
+			`
+			<li class="pdf">
+				<a href="${block.attachment.url}">
+					<figure>
+						<img controls src="${block.image.large.url}" alt="${block.title}">
+						<figcaption>READ HERE ↗</figcaption>
+					</figure>
+				</a>
+			</li>
+			`
+			channelBlocks.insertAdjacentHTML('beforeend', pdfItem);
 		}
 
 		// Uploaded audio!
 		else if (attachment.includes('audio')) {
 			// …still up to you, but here’s an `audio` element:
+			console.log('Rendering audio block:', block);
 			let audioItem =
 				`
-				<li>
-					<p><em>Audio</em></p>
-					<audio controls src="${ block.attachment.url }"></video>
+				<li class="audio">
+					<div class="audio-content">
+						<audio controls src="${ block.attachment.url }"></audio>
+						<figcaption>${block.generated_title}</figcaption>
+					</div>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
@@ -125,13 +159,17 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<li>
-					<p><em>Linked Video</em></p>
+				<li class="linked-video">
 					${ block.embed.html }
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
 			// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+			// Fixing height
+			let iframes = document.querySelectorAll('.linked-video iframe');
+			iframes.forEach(iframe => {
+			  iframe.removeAttribute('height');
+			});
 		}
 
 		// Linked audio!

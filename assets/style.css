@@ -8,6 +8,8 @@
     /* HEADER MEDIA QUERY */
     /* MAIN */
     /* MAIN MEDIA QUERY */
+    /* BLOCKS */
+    /* BLOCKS MEDIA QUERY*/
     /* BOX MODAL */
     /* FOOTER */
 
@@ -16,23 +18,158 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
-/* CLASS DEMO */
-body {
-	--spacing: 2em;
+:root {
+    /* GENERAL */
+    --spacing: 1.25rem;
+    --svg-height: 80vh;
+    --svg-min-height: 50vh;
 
+    /* FONT IN USE */
+    --menu-font: 'Roboto Mono';
+    --heading-font: 'Cormorant Garamond';
+    --subheading-font: 'Cormorant Garamond';
+    --paragraph-font: 'Roboto Mono';
+
+    /* h1 STYLE */
+    --h1-font-size: 1.5rem;
+
+    /* p STYLE */
+    --p-font-size: 1rem;
+
+}
+
+/* CLASS DEMO */
+/* body {
 	font-family: monospace;
 	font-size: 18px;
 	padding: var(--spacing);
-}
+} */
 
 body, header, section, ul, li, footer, address {
 	display: grid;
 	gap: var(--spacing);
 }
 
-main { max-width: 600px }
+/* main { max-width: 600px } */
 
 a { color: blue; }
 em { font-style: italic; }
 strong { font-weight: bold; }
-p { max-width: 50ch; }
+/* p { max-width: 50ch; } */
+
+
+
+/* NEW STYLE */
+
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+    margin: auto;
+    padding-left: var(--spacing);
+    padding-right: var(--spacing);
+}
+
+
+
+
+h1 {
+    font-family: var(--heading-font);
+    font-size: var(--h1-font-size);
+}
+
+/* MAIN STYLE */
+
+/* SVG */
+
+.collection-intro {
+    display: block;
+    padding-top: calc(2 * var(--spacing) );
+    padding-bottom: calc(2 * var(--spacing) );
+}
+
+
+@media (min-width: 768px) {
+    .collection-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .collection-intro > * {
+      grid-column: 2 / span 2;
+    }
+}
+
+@media (min-width: 1280px) {
+    .collection-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .collection-intro > * {
+      grid-column: 3 / span 2;
+    }
+}
+
+
+/* BLOCK STYLE */
+#channel-blocks {
+	grid-template-columns: repeat(1, 1fr);
+}
+
+.video video {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: hidden;
+}
+
+.linked-video iframe {
+    width: 100% !important;
+    aspect-ratio: 16/9;
+    display: block;
+    overflow: hidden;
+}
+
+li.Text blockquote {
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+#channel-blocks li.Text {
+    width: 100%;
+    height: 300px;
+    overflow: scroll;
+}
+
+#channel-blocks li.audio audio {
+    width: 100%;
+    display: block;
+}
+
+audio {
+    all:revert;
+    width: 100%;
+    display: block;
+    background: #f0f0f0;
+}
+  
+
+/* BLOCKS MEDIA QUERY*/
+
+@media (min-width: 768px) {
+    #channel-blocks {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1280px) {
+    #channel-blocks {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1920px) {
+    #channel-blocks {
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
