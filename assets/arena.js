@@ -68,10 +68,10 @@ let renderBlock = (block) => {
 						<figcaption>${ block.title }</figcaption>
 					</figure>
 				</button>
-					<dialog>
-						<p>I am in a modal overlay!</p>
-						<button class="close">Close it!</button>
-					</dialog>
+				<dialog>
+					<p>I am in a modal overlay!</p>
+					<button class="close">Close it!</button>
+				</dialog>
 				
 			</li>
 			`		
@@ -206,9 +206,14 @@ let initInteraction = () => {
 	imageBlocks.forEach((block) => {
 		let openButton = block.querySelector('button')
 		let dialog = block.querySelector('dialog')
+		let closeButton = dialog.querySelector('button')
 
 		openButton.onclick = () => {
-			dialog.showModal
+			dialog.showModal()
+		}
+
+		closeButton.onclick = () => {
+			dialog.close()
 		}
 
 
