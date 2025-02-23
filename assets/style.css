@@ -63,7 +63,6 @@ strong { font-weight: bold; }
 
 html {
     scroll-behavior: smooth;
-    width: 100%;
     margin: auto;
     padding-left: var(--spacing);
     padding-right: var(--spacing);
@@ -102,17 +101,18 @@ h1 {
 @media (min-width: 1280px) {
     .collection-intro {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 
     .collection-intro > * {
-      grid-column: 3 / span 2;
+      grid-column: 3 / span 3;
     }
 }
 
 
 /* BLOCK STYLE */
 #channel-blocks {
+    display: grid;
 	grid-template-columns: repeat(1, 1fr);
 }
 
@@ -174,3 +174,36 @@ audio {
 	grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 }
+
+
+/* LOOP ANIMATION */
+
+.loop {
+    display: block;
+    height: 100vh;
+    width: auto;
+    max-width: 100%;
+}
+  
+g {
+    transform-box: fill-box;
+    transform-origin: center center;
+    animation: rotate 15s linear infinite;
+}
+  
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+
+g:nth-child(odd) {
+    animation-duration: 10s;
+  }
+  
+  g:nth-child(even) {
+    animation-duration: 20s;
+  }
