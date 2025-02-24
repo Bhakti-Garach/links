@@ -42,7 +42,7 @@ let renderBlock = (block) => {
 	if (block.class == 'Link') {
 		let linkItem =
 			`
-			<li>
+			<li class="links">
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
@@ -65,11 +65,15 @@ let renderBlock = (block) => {
 				<button>
 					<figure>
 						<image src="${ block.image.large.url }">
-						<figcaption>${ block.title }</figcaption>
+						<h3>${ block.title }</h3>
 					</figure>
 				</button>
 				<dialog>
-					<p>I am in a modal overlay!</p>
+					<div>
+						<p>${ block.title }</p>
+						<p>${ block.description_html }</p>
+					</div>
+					<image src="${ block.image.large.url }">
 					<button class="close">Close it!</button>
 				</dialog>
 				

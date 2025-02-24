@@ -211,14 +211,22 @@ button {
     cursor: pointer;
 }
 
+dialog[open] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    inset: var(--spacing);
+}
+
 
 /* LOOP ANIMATION */
 
 .loop {
     display: block;
-    padding-top: calc(2 * var(--spacing) );
-    padding-bottom: calc(2 * var(--spacing) );
+    padding-top: calc(2 * var(--spacing));
+    padding-bottom: calc(2 * var(--spacing));
     margin: 0;
+    overflow: hidden;
+    margin-top: 1rem;
 }
   
 g {
