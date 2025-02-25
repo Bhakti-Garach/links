@@ -158,14 +158,11 @@ let renderBlock = (block) => {
 				<a href="${block.attachment.url}">
 					<figure>
 						<img controls src="${block.image.large.url}" alt="${block.title}">
-						<figcaption>READ HERE ↗</figcaption>
 					</figure>
 				</a>
 				</button>
 				<dialog>
-					<div class="modal-content">
-					<iframe src="${ block.attachment.url }" style="width: 100%; height: 80vh;" allowfullscreen></iframe>
-					</div>
+					<div></div>
 					<button class="close">[CLOSE]</button>
 				</dialog>
 			</li>
