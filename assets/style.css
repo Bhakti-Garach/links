@@ -58,7 +58,17 @@
 
 /* main { max-width: 600px } */
 
-a { color: blue; }
+a { 
+    border: black solid 1px;
+    border-radius: 30px;
+    font-family: var(--paragraph-font);
+    text-transform: uppercase;
+    padding-left: calc(1.2 * var(--spacing));
+    padding-right: calc(1.2 * var(--spacing));
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+}
 em { font-style: italic; }
 strong { font-weight: bold; }
 /* p { max-width: 50ch; } */
@@ -80,6 +90,11 @@ h1 {
     font-size: var(--h1-font-size);
 }
 
+p {
+    padding-top: var(--spacing);
+    padding-bottom: var(--spacing);
+}
+
 h3, figcaption {
     font-family: var(--block-title-font);
     font-size: var(--h3-font-size);
@@ -91,6 +106,9 @@ h3, figcaption {
     font-family: var(--subheading-font);
     font-size: var(--h1-font-size);
 }
+
+
+/* HEADER STYLE */
 
 
 /* MAIN STYLE */
@@ -175,7 +193,8 @@ audio {
 .image-block {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-y: hidden;
+    object-fit: cover;
     
 }
   
@@ -253,9 +272,8 @@ body:has(dialog[open]) {
 /* LOOP ANIMATION */
 
 .loop {
-    display: block;
+    display: flex;
     padding-top: calc(2 * var(--spacing));
-    padding-bottom: calc(2 * var(--spacing));
     margin: 0;
     overflow: hidden;
     margin-top: 1rem;
