@@ -236,6 +236,8 @@ audio {
 
 button {
     cursor: pointer;
+    width: 100%;
+    height: 100%;
 }
 
 dialog[open] {
@@ -262,10 +264,27 @@ body:has(dialog[open]) {
     overflow: hidden;
 }
 
-.image-block:has(dialog[open]) figure {
+body:has(dialog[open]) figure {
     filter: blur(8px);
 }
 
+.modal-content {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: black;
+    z-index: 1;
+    background-color: white; 
+    border-radius: 10px; 
+    padding: 30px; 
+
+}
 
 
 

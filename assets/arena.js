@@ -48,7 +48,7 @@ let renderBlock = (block) => {
 					<h3>${ block.title }</h3>
 				</button>
 				<dialog>
-					<div>
+					<div class="modal-content">
 						<img src="${ block.image.original.url }"></img>
 						<p>${ block.title }</p>
 						<p>${ block.description_html }</p>
@@ -73,7 +73,7 @@ let renderBlock = (block) => {
 						<h3>${ block.title }</h3>
 					</figure>
 				</button>
-				<dialog>
+				<dialog class="modal-content">
 					<div>
 						<p>${ block.title }</p>
 						<p>${ block.description_html }</p>
