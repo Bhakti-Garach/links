@@ -42,15 +42,21 @@ let renderBlock = (block) => {
 	if (block.class == 'Link') {
 		let linkItem =
 			`
-			<li class="links">
-				<picture>
-					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
-					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
-					<img src="${ block.image.original.url }">
-				</picture>
-				<h3>${ block.title }</h3>
+			<li class="link-block">
+				<button>
+					<img src="${ block.image.original.url }"></img>
+					<h3>${ block.title }</h3>
 
-				<p><a href="${ block.source.url }">See the original ↗</a></p>
+					<p><a href="${ block.source.url }">See the original ↗</a></p>
+				</button>
+				<dialog>
+					<div>
+						<img src="${ block.image.original.url }"></img>
+						<p>${ block.title }</p>
+						<p>${ block.description_html }</p>
+					</div>
+					<button class="close">[CLOSE]</button>
+				</dialog>
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
@@ -64,7 +70,7 @@ let renderBlock = (block) => {
 			<li class="image-block">
 				<button>
 					<figure>
-						<image src="${ block.image.large.url }">
+						<img src="${ block.image.original.url }"></img>
 						<h3>${ block.title }</h3>
 					</figure>
 				</button>
@@ -73,8 +79,8 @@ let renderBlock = (block) => {
 						<p>${ block.title }</p>
 						<p>${ block.description_html }</p>
 					</div>
-					<image src="${ block.image.large.url }">
-					<button class="close">Close it!</button>
+					<img src="${ block.image.original.url }"></img>
+					<button class="close">[CLOSE]</button>
 				</dialog>
 				
 			</li>
@@ -88,7 +94,15 @@ let renderBlock = (block) => {
 		let textItem =
 		`
 		<li class="Text">
-			<blockquote>${block.content_html}</blockquote>
+			<button>
+				<blockquote>${block.content}</blockquote>
+			</button>
+			<dialog>
+				<div class="modal-content">
+					<blockquote>${ block.content }</blockquote>
+				</div>
+				<button class="close">[CLOSE]</button>
+			</dialog>
 		</li>
 		`
 		channelBlocks.insertAdjacentHTML('beforeend', textItem)
@@ -105,8 +119,17 @@ let renderBlock = (block) => {
 			let videoItem =
 				`
 				<li class="video">
+				<button>
 					<video src="${ block.attachment.url }" autoplay muted playsinline loop></video>
 					<figcaption>${block.generated_title}</figcaption>
+				</button>
+				<dialog>
+					<div class="modal-content">
+					<video src="${ block.attachment.url }" controls style="width: 100%; height: auto;"></video>
+					<p>${ block.generated_title }</p>
+					</div>
+					<button class="close">[CLOSE]</button>
+				</dialog>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
@@ -132,12 +155,20 @@ let renderBlock = (block) => {
 			let pdfItem =
 			`
 			<li class="pdf">
+				<button>
 				<a href="${block.attachment.url}">
 					<figure>
 						<img controls src="${block.image.large.url}" alt="${block.title}">
 						<figcaption>READ HERE ↗</figcaption>
 					</figure>
 				</a>
+				</button>
+				<dialog>
+					<div class="modal-content">
+					<iframe src="${ block.attachment.url }" style="width: 100%; height: 80vh;" allowfullscreen></iframe>
+					</div>
+					<button class="close">[CLOSE]</button>
+				</dialog>
 			</li>
 			`
 			channelBlocks.insertAdjacentHTML('beforeend', pdfItem);
@@ -150,10 +181,19 @@ let renderBlock = (block) => {
 			let audioItem =
 				`
 				<li class="audio">
-					<div class="audio-content">
-						<audio controls src="${ block.attachment.url }"></audio>
-						<figcaption>${block.generated_title}</figcaption>
-					</div>
+					<button>
+						<div class="audio-content">
+							<audio controls src="${ block.attachment.url }"></audio>
+							<figcaption>${block.generated_title}</figcaption>
+						</div>
+					</button>
+					<dialog>
+						<div class="modal-content">
+						<audio controls src="${ block.attachment.url }" style="width: 100%;"></audio>
+						<p>${ block.generated_title }</p>
+						</div>
+						<button class="close">[CLOSE]</button>
+					</dialog>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
@@ -171,7 +211,15 @@ let renderBlock = (block) => {
 			let linkedVideoItem =
 				`
 				<li class="linked-video">
+				<button>
 					${ block.embed.html }
+				</button>
+				<dialog>
+                    <div class="modal-content">
+                        ${ block.embed.html }
+                    </div>
+                    <button class="close">[CLOSE]</button>
+                </dialog>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
@@ -206,8 +254,8 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 }
 
 let initInteraction = () => {
-	let imageBlocks = document.querySelectorAll('.image-block > button')
-	imageBlocks.forEach((block) => {
+	let blocks = document.querySelectorAll('.image-block, .link-block, .Text, .video, .pdf, .audio, .linked-video')
+	blocks.forEach((block) => {
 		let openButton = block.querySelector('button')
 		let dialog = block.querySelector('dialog')
 		let closeButton = dialog.querySelector('button')
@@ -220,8 +268,14 @@ let initInteraction = () => {
 			dialog.close()
 		}
 
+		dialog.onclick = (event) => { // Listen on our `modal` also…
+	if (event.target == dialog) { // Only if clicks are to itself (the background).
+		dialog.close() // Close it then too.
+		}
+	}
 
 	})
+
 }
 
 
