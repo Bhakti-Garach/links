@@ -23,6 +23,8 @@
     --spacing: 1.25rem;
     --svg-height: 80vh;
     --svg-min-height: 50vh;
+    --box-width: 80vw;
+    --box-height: 60vh;
 
     /* FONT IN USE */
     --menu-font: 'Roboto Mono';
@@ -130,6 +132,7 @@ h3, figcaption {
     display: grid;
     gap: var(--spacing);
 	grid-template-columns: repeat(1, minmax(0, 1fr));
+    padding-top: calc(2 * var(--spacing));
 }
 
 .video video {
@@ -182,6 +185,9 @@ audio {
 @media (min-width: 550px) {
     #channel-blocks {
 	grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: calc(2 * var(--spacing));
+    padding-left: calc(2 * var(--spacing));
+    padding-right: calc(2 * var(--spacing));
     }
 }
 
@@ -194,6 +200,7 @@ audio {
 @media (min-width: 1280px) {
     #channel-blocks {
 	grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: calc(5 * var(--spacing));
     }
 
 }
@@ -201,6 +208,7 @@ audio {
 @media (min-width: 1920px) {
     #channel-blocks {
 	grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: calc(5 * var(--spacing));
     }
 }
 
@@ -213,12 +221,17 @@ button {
 
 dialog[open] {
     background-color: white;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    inset: var(--spacing);
-    width: 300px;
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	max-width: 90vw;
 	position: fixed;
+    padding: var(--spacing);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
 ::backdrop {

@@ -46,8 +46,6 @@ let renderBlock = (block) => {
 				<button>
 					<img src="${ block.image.original.url }"></img>
 					<h3>${ block.title }</h3>
-
-					<p><a href="${ block.source.url }">See the original ↗</a></p>
 				</button>
 				<dialog>
 					<div>
@@ -55,6 +53,7 @@ let renderBlock = (block) => {
 						<p>${ block.title }</p>
 						<p>${ block.description_html }</p>
 					</div>
+					<p><a href="${ block.source.url }">See the original ↗</a></p>
 					<button class="close">[CLOSE]</button>
 				</dialog>
 			</li>
@@ -228,6 +227,9 @@ let renderBlock = (block) => {
 			let iframes = document.querySelectorAll('.linked-video iframe');
 			iframes.forEach(iframe => {
 			  iframe.removeAttribute('height');
+			  if(iframe.hasAttribute('allowfullscreen')){
+                iframe.removeAttribute('allowfullscreen');
+              }
 			});
 		}
 
@@ -269,7 +271,7 @@ let initInteraction = () => {
 		}
 
 		dialog.onclick = (event) => { // Listen on our `modal` also…
-	if (event.target == dialog) { // Only if clicks are to itself (the background).
+			if (event.target == dialog) { // Only if clicks are to itself (the background).
 		dialog.close() // Close it then too.
 		}
 	}
