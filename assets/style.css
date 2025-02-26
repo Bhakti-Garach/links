@@ -189,7 +189,7 @@ h3, figcaption {
     border: black solid 1px;
     padding: calc(1.2 * var(--spacing));
     border-radius: 20px;
-    height: 80vh;
+    height: 90vh;
     margin-bottom: calc(1.2 * var(--spacing));  
 }
 
@@ -201,6 +201,16 @@ h3, figcaption {
     height: 80vh; 
     margin-bottom: calc(1.2 * var(--spacing)); 
     }
+
+    #Layer_1 {
+        width: 100%;
+        height: 80vh;
+        overflow: hidden;
+        align-content: center;
+        overflow: hidden;
+    }
+
+
 
 }
 
@@ -353,6 +363,9 @@ button {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    border-radius: 20px;
 
 }
 
@@ -367,6 +380,9 @@ button {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    border-radius: 20px;
 
 }
 
@@ -381,6 +397,9 @@ button {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    border-radius: 20px;
 
 }
 
@@ -395,6 +414,9 @@ button {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    border-radius: 20px;
 
 }
 
@@ -409,6 +431,9 @@ button {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    border-radius: 20px;
 
 }
 
@@ -423,6 +448,9 @@ button {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    border-radius: 20px;
 
 }
 
@@ -633,7 +661,4 @@ g:nth-child(odd) {
         padding: 0.4rem 0.8rem;
     }
 }
-
-
-
 
