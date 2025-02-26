@@ -287,6 +287,7 @@ audio {
     width: 100%;
     display: block;
     background: #f0f0f0;
+    border-radius: 50px;
 }
 
 .image-block {
@@ -318,7 +319,7 @@ audio {
 @media (min-width: 1280px) {
     #channel-blocks {
 	grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: calc(5 * var(--spacing));
+    gap: calc(2 * var(--spacing));
     }
 
 }
@@ -564,3 +565,75 @@ g:nth-child(odd) {
         margin-bottom: var(--spacing);
     }
 }
+
+/* COLOPHON BOX MODAL */
+
+#colophonModal {
+    background-color: white;
+    border: none;
+    padding: 2rem;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#colophonModal .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: var(--paragraph-font);
+    font-size: var(--p-font-size);
+}
+
+
+#closeColophon button {
+    background: white;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 50px;
+    margin-top: 1rem;
+    transition: all 0.2s ease-in-out;
+    border: black solid 1px;
+}
+
+#closeColophon:hover {
+    background: red;
+}
+
+
+::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+
+@media (max-width: 768px) {
+    #colophonModal {
+        max-width: 95vw;
+        max-height: 85vh;
+        padding: 1.5rem;
+    }
+
+    #colophonModal .modal-content {
+        font-size: 0.9rem;
+    }
+
+    #closeColophon {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+
+
+

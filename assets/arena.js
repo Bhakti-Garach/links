@@ -342,3 +342,26 @@ document.addEventListener("DOMContentLoaded", () => {
     initFilters();
 });
 
+// COLOPHON
+document.addEventListener("DOMContentLoaded", () => {
+    let colophonModal = document.querySelector("#colophonModal");
+    let openColophon = document.querySelector("#colophon");
+    let closeColophon = document.querySelector("#closeColophon");
+
+    // OPEN MODAL
+    openColophon.addEventListener("click", (event) => {
+        event.preventDefault();
+        colophonModal.showModal();
+    });
+
+    // CLOSE MODAL
+    closeColophon.addEventListener("click", () => {
+        colophonModal.close();
+    });
+
+    colophonModal.addEventListener("click", (event) => {
+        if (event.target === colophonModal) {
+            colophonModal.close();
+        }
+    });
+});
