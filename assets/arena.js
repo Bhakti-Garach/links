@@ -45,7 +45,6 @@ let renderBlock = (block) => {
 			<li class="link-block">
 				<button>
 					<img src="${ block.image.original.url }"></img>
-					<h3>${ block.title }</h3>
 				</button>
 				<dialog>
 					<div class="modal-content">
@@ -70,7 +69,6 @@ let renderBlock = (block) => {
 				<button>
 					<figure>
 						<img src="${ block.image.original.url }"></img>
-						<h3>${ block.title }</h3>
 					</figure>
 				</button>
 				<dialog class="modal-content">
@@ -120,7 +118,6 @@ let renderBlock = (block) => {
 				<li class="video">
 				<button>
 					<video src="${ block.attachment.url }" autoplay muted playsinline loop></video>
-					<figcaption>${block.generated_title}</figcaption>
 				</button>
 				<dialog>
 					<div class="modal-content">
@@ -180,7 +177,7 @@ let renderBlock = (block) => {
 					<button>
 						<div class="audio-content">
 							<audio controls src="${ block.attachment.url }"></audio>
-							<figcaption>${block.generated_title}</figcaption>
+
 						</div>
 					</button>
 					<dialog>
@@ -299,3 +296,41 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
 		renderUser(data.user, channelUsers)
 	})
+
+
+
+// FILTER
+
+
+let filterBlocks = (filter) => {
+    let blocks = document.querySelectorAll("#channel-blocks li");
+
+    blocks.forEach((block) => {
+        block.style.display = "none";
+
+
+        if (filter === "all" || block.classList.contains(filter)) {
+            block.style.display = "block";
+        }
+    });
+}
+
+
+let initFilters = () => {
+    let filterButtons = document.querySelectorAll(".filter-btn");
+
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            let filter = button.getAttribute("data-filter");
+            filterBlocks(filter);
+        });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    initFilters();
+});
