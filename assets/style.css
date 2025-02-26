@@ -190,7 +190,7 @@ h3, figcaption {
     padding: calc(1.2 * var(--spacing));
     border-radius: 20px;
     height: 60vh;
-    margin-bottom: calc(1.2 * var(--spacing));  
+    margin-bottom: calc(1.2 * var(--spacing)); 
 }
 
 @media (min-width: 900px) {
@@ -199,7 +199,7 @@ h3, figcaption {
     padding: calc(1.2 * var(--spacing));
     border-radius: 20px;
     height: 80vh; 
-    margin-bottom: calc(1.2 * var(--spacing)); 
+    margin-bottom: calc(1.2 * var(--spacing));
     }
 
     #Layer_1 {
@@ -252,6 +252,7 @@ h3, figcaption {
         grid-template-columns: 2fr 3fr;
         gap: var(--spacing);
     }
+
 }
 
 /* BLOCK STYLE */
@@ -662,3 +663,18 @@ g:nth-child(odd) {
     }
 }
 
+footer {
+    font-family: var(--menu-font);
+    font-size: var(--p-font-size);
+    text-transform: uppercase;
+    text-align: center;
+    border: black solid 1px;
+    padding-left: calc(1.2 * var(--spacing));
+    padding-right: calc(1.2 * var(--spacing));
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-top: calc(1.2 * var(--spacing));
+    margin-bottom: calc(1.2 * var(--spacing));
+    border-radius: 20px;
+
+}
