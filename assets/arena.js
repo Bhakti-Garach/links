@@ -46,14 +46,12 @@ let renderBlock = (block) => {
 				<button>
 					<img src="${ block.image.original.url }"></img>
 				</button>
-				<dialog>
+				<dialog class="dialog-color">
+					<button class="close">CLOSE</button>
 					<div class="modal-content">
-						<img src="${ block.image.original.url }"></img>
+						<img src="${ block.image.original.url }">
 						<p>${ block.title }</p>
-						<p>${ block.description_html }</p>
 					</div>
-					<p><a href="${ block.source.url }">See the original ↗</a></p>
-					<button class="close">[CLOSE]</button>
 				</dialog>
 			</li>
 			`
@@ -68,11 +66,11 @@ let renderBlock = (block) => {
 			<li class="image-block">
 				<button>
 					<figure>
-						<img src="${ block.image.original.url }"></img>
+						<img src="${ block.image.original.url }">
 					</figure>
 				</button>
-				<dialog class="modal-content">
-					<div>
+				<dialog class="dialog-color">
+					<div class="modal-content">
 						<p>${ block.title }</p>
 						<p>${ block.description_html }</p>
 					</div>
@@ -94,7 +92,7 @@ let renderBlock = (block) => {
 			<button>
 				<blockquote>${block.content}</blockquote>
 			</button>
-			<dialog>
+			<dialog class="dialog-color">
 				<div class="modal-content">
 					<blockquote>${ block.content }</blockquote>
 				</div>
@@ -119,7 +117,7 @@ let renderBlock = (block) => {
 				<button>
 					<video src="${ block.attachment.url }" autoplay muted playsinline loop></video>
 				</button>
-				<dialog>
+				<dialog class="dialog-color">
 					<div class="modal-content">
 					<video src="${ block.attachment.url }" controls style="width: 100%; height: auto;"></video>
 					<p>${ block.generated_title }</p>
@@ -158,7 +156,7 @@ let renderBlock = (block) => {
 					</figure>
 				</a>
 				</button>
-				<dialog>
+				<dialog class="dialog-color">
 					<div></div>
 					<button class="close">[CLOSE]</button>
 				</dialog>
@@ -180,7 +178,7 @@ let renderBlock = (block) => {
 
 						</div>
 					</button>
-					<dialog>
+					<dialog class="dialog-color">
 						<div class="modal-content">
 						<audio controls src="${ block.attachment.url }" style="width: 100%;"></audio>
 						<p>${ block.generated_title }</p>
@@ -207,7 +205,7 @@ let renderBlock = (block) => {
 				<button>
 					${ block.embed.html }
 				</button>
-				<dialog>
+				<dialog class="dialog-color">
                     <div class="modal-content">
                         ${ block.embed.html }
                     </div>

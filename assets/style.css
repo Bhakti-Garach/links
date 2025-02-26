@@ -337,15 +337,16 @@ button {
     cursor: pointer;
     width: 100%;
     height: 100%;
+    font-family: var(--paragraph-font);
+    font-size: var(--p-font-size);
 }
 
-dialog[open] {
-    background-color: white;
+.link-block dialog[open] {
+    background-color: var(--links-color);
     display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	max-width: 90vw;
 	position: fixed;
     padding: var(--spacing);
     left: 50%;
@@ -353,6 +354,77 @@ dialog[open] {
     transform: translate(-50%, -50%);
 
 }
+
+.image-block dialog[open] {
+    background-color: var(--image-color);
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+    padding: var(--spacing);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.Text dialog[open] {
+    background-color: var(--links-color);
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+    padding: var(--spacing);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.video dialog[open] {
+    background-color: var(--video-color);
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+    padding: var(--spacing);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.audio dialog[open] {
+    background-color: var(--audio-color);
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+    padding: var(--spacing);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.linked-video dialog[open] {
+    background-color: var(--video-color);
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+    padding: var(--spacing);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
 
 ::backdrop {
 	background-color: rgb(0 0 0 / 75%); /* A dark overlay. */
@@ -368,23 +440,9 @@ body:has(dialog[open]) figure {
 }
 
 .modal-content {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: black;
-    z-index: 1;
-    background-color: white; 
-    border-radius: 10px; 
-    padding: 30px; 
-
+    max-width: 90vw;
+    height: 60vh;
 }
-
 
 
 /* LOOP ANIMATION */
