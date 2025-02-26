@@ -516,10 +516,10 @@ g:nth-child(odd) {
 .filter-btn[data-filter="all"] {
     background-color: var(--colophon-color);
 }
-.filter-btn[data-filter="link"] {
+.filter-btn[data-filter="link-block"] {
     background-color: var(--links-color);
 }
-.filter-btn[data-filter="image"] {
+.filter-btn[data-filter="image-block"] {
     background-color: var(--images-color);
 }
 .filter-btn[data-filter="video"] {

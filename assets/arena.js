@@ -299,7 +299,6 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 
 // FILTER
 
-
 let filterBlocks = (filter) => {
     let blocks = document.querySelectorAll("#channel-blocks li");
 
@@ -307,7 +306,17 @@ let filterBlocks = (filter) => {
         block.style.display = "none";
 
 
-        if (filter === "all" || block.classList.contains(filter)) {
+        if (filter === "all") {
+            block.style.display = "block";
+        }
+
+        else if (filter === "video") {
+            if (block.classList.contains("video") || block.classList.contains("linked-video")) {
+                block.style.display = "block";
+            }
+        }
+
+        else if (block.classList.contains(filter)) {
             block.style.display = "block";
         }
     });
@@ -319,12 +328,12 @@ let initFilters = () => {
 
     filterButtons.forEach((button) => {
         button.addEventListener("click", () => {
-
+            
             filterButtons.forEach((btn) => btn.classList.remove("active"));
             button.classList.add("active");
 
             let filter = button.getAttribute("data-filter");
-            filterBlocks(filter);
+            filterBlocks(filter); 
         });
     });
 }
@@ -332,3 +341,4 @@ let initFilters = () => {
 document.addEventListener("DOMContentLoaded", () => {
     initFilters();
 });
+
