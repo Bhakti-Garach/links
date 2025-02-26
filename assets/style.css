@@ -189,7 +189,7 @@ h3, figcaption {
     border: black solid 1px;
     padding: calc(1.2 * var(--spacing));
     border-radius: 20px;
-    height: 90vh;
+    height: 60vh;
     margin-bottom: calc(1.2 * var(--spacing));  
 }
 
@@ -486,7 +486,7 @@ body:has(dialog[open]) figure {
 
 @media (min-width: 1280px) {
     .loop {
-    height: 100svh;
+    height: 60svh;
     position: fixed;
     }
 }
